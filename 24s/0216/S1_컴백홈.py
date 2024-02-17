@@ -20,6 +20,10 @@ answer = 0
 def DFS(x, y, dep):
     global answer
     visited[x][y] = 1
+
+    if dep > K:
+        return
+
     if dep == K and x == 0 and y == C-1:
         answer += 1
 
