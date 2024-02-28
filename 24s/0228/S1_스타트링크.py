@@ -13,26 +13,26 @@ from collections import deque
 
 
 F, S, G, U, D = map(int, input().split())
-cnt = 0
-def BFS():
+visited = [0 for _ in range(F+1)]
+cnt = [0 for _ in range(F+1)]
+def BFS(v):
     global cnt
-    queue = deque()
-    queue.append(S)
+    queue = deque([v])
+    visited[v] = 1
     while queue:
         now = queue.popleft()
 
-        if 1 <= now <= G:
-            if now < G and now + U < G:
-                now += U
-                cnt += 1
-                queue.append(now)
-            elif now > G and now - D > 1 :
-                now -= D
-                cnt += 1
-                queue.append(now)
-            elif now == G:
-                return cnt
+        if now == G:
+            return cnt[G]
 
-            print(now, cnt)
-BFS()
-print(cnt)
+        else:
+            for i in (now+U, now-D):
+                if 1 <= i <= F and visited[i] == 0:
+                    visited[i] = 1
+                    cnt[i] = cnt[now] + 1
+                    queue.append(i)
+    if cnt[G] == 0:
+        return "use the stairs"
+
+print(BFS(S))
+
