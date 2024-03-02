@@ -54,7 +54,7 @@ def BFS():
             nx = x + dx[k]
             ny = y + dy[k]
 
-            if 0 > nx or N <= nx or 0 > ny or M <= nx:
+            if 0 > nx or N <= ny or 0 > ny or M <= nx:
                 continue
             if new_board[nx][ny] == 0:
                 new_board[nx][ny] = 2
