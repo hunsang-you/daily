@@ -25,7 +25,7 @@
 0 0 0 0 0 0 0 0
 '''
 # 그래프 이론, BFS, 브루트포스
-
+# pypy
 import sys
 import copy
 from collections import deque

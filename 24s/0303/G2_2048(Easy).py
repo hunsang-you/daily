@@ -5,7 +5,6 @@
 8 8 8
 '''
 # 구현, 브루트포스, 시뮬레이션, 백트래킹
-
 import sys
 input = sys.stdin.readline
 import copy
@@ -112,7 +111,7 @@ def DFS(n, arr):
         return
 
     for i in range(4):
-        temp_arr = copy.deepcopy(arr)
+        temp_arr = copy.deepcopy(arr)   # 딥카피
         if i == 0:
             DFS(n+1, move_up(temp_arr))
 
