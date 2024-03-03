@@ -31,6 +31,7 @@ import copy
 from collections import deque
 input = sys.stdin.readline
 
+
 N, M = map(int, input().split())
 
 board = [list(map(int, input().split())) for _ in range(N)]
@@ -54,7 +55,7 @@ def BFS():
             nx = x + dx[k]
             ny = y + dy[k]
 
-            if 0 > nx or N <= ny or 0 > ny or M <= nx:
+            if 0 > nx or N <= nx or 0 > ny or M <= ny:
                 continue
             if new_board[nx][ny] == 0:
                 new_board[nx][ny] = 2
@@ -63,7 +64,7 @@ def BFS():
     cnt = 0
 
     for i in range(N):
-        cnt += new_board[1].count(0)
+        cnt += new_board[i].count(0)
     answer = max(answer, cnt)
 
 
