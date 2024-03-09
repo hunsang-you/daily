@@ -78,7 +78,7 @@ def BFS(n):
 
         elif len(graph[i]) == 0 and visited[i] == 1:
             return 'yes'
-    
+
 if 1 in position:
     print('Yes')
 else:
