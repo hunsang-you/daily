@@ -19,5 +19,9 @@ input = sys.stdin.readline
 words = list(input().rstrip())
 
 zero, one = words.count('0') // 2, words.count('1') // 2
-s = ''
 
+for i in range(zero):
+    print('0', end ='')
+
+for j in range(one):
+    print('1', end='')
