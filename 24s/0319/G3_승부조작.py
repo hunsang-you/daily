@@ -23,23 +23,6 @@ N = int(input())
 board = [list(map(int, input().split())) for _ in range(N)]
 new_score = [[0] * N for _ in range(N)]
 
-dx = [-1, 1, 0, 0, -1, -1, 1, 1]
-dy = [0, 0, 1, -1, -1, 1, -1, 1]
-
-def func(i, j, dir):
-    score = [[0] * N for _ in range(N)]
-
-    
-
-ans = 0
-for i in range(N):
-    for j in range(N):
-        ans = max(ans, func(i, j, dir))
-
-print(new_score)
-
-
-
 # def func():
 #     global new_score
 #     score = [[0] * N for _ in range(N)]
