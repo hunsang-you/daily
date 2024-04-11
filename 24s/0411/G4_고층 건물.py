@@ -29,6 +29,7 @@ for i in range(N-1):
     temp = -1e9
     for j in range(i+1, N):
         slope = (arr[j] - arr[i]) / (j - i)     # 높이증가량 / 거리증가량 => 기울기
+        # 기울기가 이전의 기울기보다 크다면 갱신후 보이는 것으로 추가
         if slope > temp:
             temp = max(temp, slope)
             ans[i] += 1
