@@ -1,0 +1,111 @@
+'''
+8 8
+WBWBWBWB
+BWBWBWBW
+WBWBWBWB
+BWBBBWBW
+WBWBWBWB
+BWBWBWBW
+WBWBWBWB
+BWBWBWBW
+
+10 13
+BBBBBBBBWBWBW
+BBBBBBBBBWBWB
+BBBBBBBBWBWBW
+BBBBBBBBBWBWB
+BBBBBBBBWBWBW
+BBBBBBBBBWBWB
+BBBBBBBBWBWBW
+BBBBBBBBBWBWB
+WWWWWWWWWWBWB
+WWWWWWWWWWBWB
+
+8 8
+BWBWBWBW
+WBWBWBWB
+BWBWBWBW
+WBWBWBWB
+BWBWBWBW
+WBWBWBWB
+BWBWBWBW
+WBWBWBWB
+
+9 23
+BBBBBBBBBBBBBBBBBBBBBBB
+BBBBBBBBBBBBBBBBBBBBBBB
+BBBBBBBBBBBBBBBBBBBBBBB
+BBBBBBBBBBBBBBBBBBBBBBB
+BBBBBBBBBBBBBBBBBBBBBBB
+BBBBBBBBBBBBBBBBBBBBBBB
+BBBBBBBBBBBBBBBBBBBBBBB
+BBBBBBBBBBBBBBBBBBBBBBB
+BBBBBBBBBBBBBBBBBBBBBBW
+
+10 10
+BBBBBBBBBB
+BBWBWBWBWB
+BWBWBWBWBB
+BBWBWBWBWB
+BWBWBWBWBB
+BBWBWBWBWB
+BWBWBWBWBB
+BBWBWBWBWB
+BWBWBWBWBB
+BBBBBBBBBB
+
+8 8
+WBWBWBWB
+BWBWBWBW
+WBWBWBWB
+BWBBBWBW
+WBWBWBWB
+BWBWBWBW
+WBWBWWWB
+BWBWBWBW
+
+11 12
+BWWBWWBWWBWW
+BWWBWBBWWBWW
+WBWWBWBBWWBW
+BWWBWBBWWBWW
+WBWWBWBBWWBW
+BWWBWBBWWBWW
+WBWWBWBBWWBW
+BWWBWBWWWBWW
+WBWWBWBBWWBW
+BWWBWBBWWBWW
+WBWWBWBBWWBW
+
+'''
+# 브루트포스 알고리즘
+
+import sys
+input = sys.stdin.readline
+
+N, M = map(int, input().split())
+
+board = [list(input().rstrip()) for _ in range(N)]
+check = []
+for i in range(N-7):
+    for j in range(M-7):
+        check1 = 0
+        check2 = 0
+
+        for k in range(i, i+8):
+            for l in range(j, j+8):
+                if (k + l) % 2 == 0:
+                    if board[k][l] == 'B':
+                        check1 += 1
+                    else:
+                        check2 += 1
+
+                else:
+                    if board[k][l] == 'W':
+                        check1 += 1
+                    else:
+                        check2 += 1
+
+        check.append(min(check1, check2))
+
+print(min(check))
