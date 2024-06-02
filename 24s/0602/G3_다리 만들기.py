@@ -39,9 +39,8 @@ def BFS(i, j):
 
             if 0 <= nx < N and 0 <= ny < N and visited[nx][ny] == 0 and board[nx][ny] == 1:
                 visited[nx][ny] = 1
-                queue.append((i, j))
+                queue.append((nx, ny))
                 board[nx][ny] = area
-
 
 # 섬에서 섬까지 최단거리 찾기
 def BFS2(island):
@@ -61,10 +60,10 @@ def BFS2(island):
             ny = y + dy[k]
 
             if 0 <= nx < N and 0 <= ny < N:
-                # 다른 섬만남
+                # 다른 섬을 만남
                 if board[nx][ny] != island and board[nx][ny] != 0:
-                    return distance[nx][ny]
-                # 물이고 아직 안 지남
+                    return distance[x][y]
+                # 물이고 아직 지나지 않은 곳
                 elif board[nx][ny] == 0 and distance[nx][ny] == -1:
                     distance[nx][ny] = distance[x][y] + 1
                     queue.append((nx, ny))
@@ -78,7 +77,6 @@ for i in range(N):
             board[i][j] = area
             BFS(i, j)
             area += 1
-
 
 result = int(1e9)
 for island in range(1, area):
